@@ -20,7 +20,7 @@ import { ServersService } from '../servers/servers.service';
     origin: '*',
   },
 })
-export class MyGateway
+export class MessagesGateway
   implements OnGatewayConnection, OnGatewayInit, OnGatewayDisconnect
 {
   @WebSocketServer()
@@ -32,7 +32,7 @@ export class MyGateway
   ) {}
 
   afterInit(server: Server) {
-    console.log('Init the Gateway');
+    console.log('Messages gateway initialized.');
     server.use((socket, next) => {
       if (socket.handshake.headers.authorization) {
         next();
